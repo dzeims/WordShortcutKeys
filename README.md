@@ -1,4 +1,5 @@
 Method 1: Use Live Server Extension (Recommended)
+
     1.Install Live Server
         Open VS Code Extensions (Ctrl+Shift+X)
         Search for "Live Server" by Ritwick Dey
