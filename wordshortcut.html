@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Word Shortcuts Cheat Sheet</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="grid-overlay"></div>
+    <button class="dark-mode-toggle" id="darkModeToggle">🌓 Toggle Mode</button>
+    
+    <div class="container">
+        <div class="header">
+            <h1>📄 Microsoft Word Shortcut Master</h1>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="🔍 Search shortcuts...">
+            <select id="categoryFilter">
+                <option value="all">All Categories</option>
+                <option value="align and format paragraphs">Align and format paragraphs</option>
+                <option value="drawing">Drawing</option>
+                <option value="extend a selection">Extend a selection</option>
+                <option value="edit text and graphics">Edit text and graphics</option>
+                <option value="edit and format the document">Edit and format the document</option>
+                <option value="frequently used shortcuts">Frequently used shortcuts</option>
+                <option value="format characters">Format characters</option>
+                <option value="go to the access keys for the ribbon">Go to the access keys for the ribbon</option>
+                <option value="insert special characters">Insert special characters</option>
+                <option value="insert paragraphs and tab characters in a table">Insert paragraphs and tab characters in a table</option>
+                <option value="insert international characters">Insert international characters</option>
+                <option value="manage text formatting">Manage text formatting</option>
+                <option value="navigate the document">Navigate the document</option>
+                <option value="outline a document">Outline a document</option>
+                <option value="preview and print documents">Preview and print documents</option>
+                <option value="review a document">Review a document</option>
+                <option value="select text and graphics">Select text and graphics</option>
+                <option value="select table content">Select table content</option>
+                <option value="use input method editors for east asian languages">Use Input Method Editors for East Asian languages</option>
+                <option value="use function key shortcuts">Use function key shortcuts</option>
+                <option value="use footnotes and endnotes">Use footnotes and endnotes</option>
+                <option value="work with web content">Work with web content</option>
+                <option value="work with tables">Work with tables</option>
+                <option value="work with references, citations, and indexing">Work with references, citations, and indexing</option>
+                <option value="work with mail merge and fields">Work with mail merge and fields</option>
+                <option value="work with text in other languages">Work with text in other languages</option>
+                <option value="work with document views">Work with document views</option>
+                <option value="work with fields">Work with fields</option>
+                <option value="work with right-to-left languages">Work with right-to-left languages</option>
+                <option value="work in the ribbon tabs and menus">Work in the ribbon tabs and menus</option>
+                <option value="work with comments">Work with comments</option>
+                <option value="zoom and adjust view">Zoom and adjust view</option>
+            </select>
+        </div>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-category="all">All Systems</button>
+            <button class="filter-btn" data-category="windows">Windows</button>
+            <button class="filter-btn" data-category="mac">Mac</button>
+            <button class="filter-btn" data-category="iOS">Office for iOS</button>
+            <button class="filter-btn" data-category="android">Office for Android</button>
+            <button class="filter-btn" data-category="web">Web</button>
+        </div>
+
+        <div class="shortcut-grid" id="shortcutContainer"></div>
+    </div>
+
+    <button id="goToTop" class="go-to-top" title="Go to Top">↑</button>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

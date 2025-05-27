@@ -1,0 +1,357 @@
+/* Define CSS variables for modern design */
+:root {
+  --primary-gradient: linear-gradient(
+    135deg,
+    hsl(210, 40%, 98%) 0%,
+    hsl(220, 40%, 96%) 100%
+  );
+  --dark-gradient: linear-gradient(
+    to bottom right,
+    hsl(240, 5%, 12%) 0%,
+    hsl(240, 5%, 18%) 100%
+  );
+  --neon-accent: hsl(210, 100%, 50%);
+  --glass-bg: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Update body styling */
+body {
+  background: var(--primary-gradient);
+  color: hsl(240, 10%, 20%);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+}
+
+body::before {
+  width: 80vw;
+  height: 80vh;
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--neon-accent) 0%,
+    transparent 70%
+  );
+  opacity: 0.15;
+  filter: blur(100px);
+  animation: float 20s infinite alternate;
+}
+
+body::after {
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(to right, transparent 95%, var(--neon-accent) 95%),
+    linear-gradient(to bottom, transparent 95%, var(--neon-accent) 95%);
+  background-size: 30px 30px;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+}
+
+/* Dark mode styling */
+.dark-mode {
+  background: var(--dark-gradient);
+  color: hsl(0, 0%, 95%);
+}
+
+.dark-mode::before {
+  opacity: 0.1;
+}
+
+.dark-mode::after {
+  opacity: 0.08;
+}
+
+/* Update container styling */
+.container {
+  position: relative;
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 12px 32px -12px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  transform: translateZ(0);
+  transition: all 0.3s ease-out;
+}
+
+.container:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 40px -12px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.search-container {
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+#searchInput {
+    padding: 0.8rem;
+    width: 600px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    transition: transform 0.2s;
+}
+
+.filter-btn.active {
+    background-color: #275c2a;
+    transform: scale(1.05);
+}
+
+/* Modified grid layout */
+.shortcut-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: minmax(100px, auto);
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Updated card styling */
+.shortcut-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    max-height: 120px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.shortcut-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-top: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.shortcut-card img:hover {
+    transform: scale(1.2);
+    z-index: 1;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.shortcut-card img.zoomable {
+    cursor: zoom-in;
+}
+
+.shortcut-card img.grabbing {
+    cursor: grabbing;
+}
+
+.shortcut-card.expanded {
+    max-height: 500px;
+    background-color: #f8f8f8;
+}
+
+.dark-mode .shortcut-card {
+    background: #2d2d2d;
+}
+
+.dark-mode .shortcut-card.expanded {
+    background-color: #383838;
+}
+
+.shortcut-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.keys {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    position: relative;
+}
+
+.shortcut-card.expanded .keys::after {
+    opacity: 1;
+}
+
+.category-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #4CAF50;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+}
+
+.description {
+    white-space: nowrap; /* Prevent text from wrapping to the next line */
+    overflow: hidden; /* Hide the overflowing text */
+    text-overflow: ellipsis; /* Add "..." to indicate truncated text */
+    display: block; /* Ensure the element behaves like a block for proper truncation */
+    max-width: 100%;
+}
+
+/* Add smooth transition for details */
+.detailed-description {
+    opacity: 0;
+    max-height: 0;
+    transition: all 0.3s ease;
+    transform: translateY(20px);
+}
+
+.shortcut-card.expanded .detailed-description {
+    opacity: 1;
+    max-height: 1000px;
+    transform: translateY(0);
+    margin-top: 1rem;
+}
+
+.additional-info {
+    display: none;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.dark-mode .additional-info {
+    border-color: #444;
+}
+
+.shortcut-card.expanded .additional-info {
+    display: block;
+}
+
+.expand-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.shortcut-card.expanded .expand-icon {
+    transform: rotate(180deg);
+}
+
+.dark-mode-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+}
+
+.dark-mode .dark-mode-toggle {
+    background-color: #fff;
+    color: #333;
+}
+
+/* filepath: styles.css */
+.go-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.go-to-top:hover {
+    background-color: #275c2a;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% { transform: translate(-10%, -10%) scale(1); }
+  50% { transform: translate(10%, 10%) scale(1.1); }
+  100% { transform: translate(-10%, -10%) scale(1); }
+}
+
+/* Modern Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neon-accent);
+  border-radius: 4px;
+}
+
+/* Optional grid overlay for alignment */
+.grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                   linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 0;
+}
